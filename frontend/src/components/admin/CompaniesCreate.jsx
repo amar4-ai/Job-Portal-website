@@ -22,6 +22,8 @@ const CompaniesCreate = () => {
                 {
                     headers: {
                         'Content-Type': 'application/json'
+                       
+
                     },
                     withCredentials: true,
                 });
