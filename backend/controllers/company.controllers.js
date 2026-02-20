@@ -59,44 +59,6 @@ export const getCompany = async (req, res) => {
 }
 //get company by id
 
-
-// chatbaba
-
-
-// export const getCompanyById = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//       return res.status(400).json({
-//         message: "Invalid company ID",
-//         success: false,
-//       });
-//     }
-
-//     const company = await Company.findById(id);
-
-//     if (!company) {
-//       return res.status(404).json({
-//         message: "Company not found",
-//         success: false,
-//       });
-//     }
-
-//     return res.status(200).json({
-//       company,
-//       success: true,
-//     });
-
-//   } catch (error) {
-//     console.error("GetCompanyById Error:", error);
-//     return res.status(500).json({
-//       message: "Internal server error",
-//       success: false,
-//     });
-//   }
-// };
-
 export const getCompanyById = async (req, res) => {
     try {
         const companyId = req.params.id;
@@ -125,64 +87,6 @@ export const getCompanyById = async (req, res) => {
 }
 
 
-//chatbaba
-
-// export const updateCompany = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//       return res.status(400).json({
-//         message: "Invalid company ID",
-//         success: false,
-//       });
-//     }
-
-//     const { name, description, website, location } = req.body;
-
-//     const updateData = {};
-//     if (name) updateData.name = name;
-//     if (description) updateData.description = description;
-//     if (website) updateData.website = website;
-//     if (location) updateData.location = location;
-
-//     const company = await Company.findById(id);
-
-//     if (!company) {
-//       return res.status(404).json({
-//         message: "Company not found",
-//         success: false,
-//       });
-//     }
-
-//     // ownership check
-//     if (company.userId.toString() !== req.id) {
-//       return res.status(403).json({
-//         message: "Not authorized to update this company",
-//         success: false,
-//       });
-//     }
-
-//     const updatedCompany = await Company.findByIdAndUpdate(
-//       id,
-//       updateData,
-//       { new: true }
-//     );
-
-//     return res.status(200).json({
-//       message: "Company information updated",
-//       company: updatedCompany,
-//       success: true,
-//     });
-
-//   } catch (error) {
-//     console.error("UpdateCompany Error:", error);
-//     return res.status(500).json({
-//       message: "Internal server error",
-//       success: false,
-//     });
-//   }
-// };
 
 export const updateCompany = async (req, res) => {
     try {
