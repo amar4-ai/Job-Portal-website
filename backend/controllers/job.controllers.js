@@ -90,10 +90,14 @@ export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;
 
-        const jobs = await Job.find({ created_by: adminId }).populate({
-            path:'company',
-            createdAt:-1
-        });
+        // const jobs = await Job.find({ created_by: adminId }).populate({
+        //     path:'company',
+        //     createdAt:-1
+        // });
+       const jobs = await Job.find({ created_by: adminId })
+  .populate("company")
+  .sort({ createdAt: -1 })
+  .lean();
 
         // console.log("ADMIN ID:", adminId);
         // console.log("ADMIN JOB COUNT:", jobs.length);
