@@ -41,8 +41,8 @@ export const register = async (req, res) => {
             phoneNumber,
             password: hashedPassword,
             role,
-            profile:{
-                profilePhoto:cloudResponse ? cloudResponse.secure_url :""
+            profile: {
+                profilePhoto: cloudResponse ? cloudResponse.secure_url : ""
             }
 
         });
@@ -63,6 +63,9 @@ export const register = async (req, res) => {
 
     }
 };
+
+
+
 export const login = async (req, res) => {
     try {
         const { email, password, role } = req.body;
@@ -143,7 +146,7 @@ export const updateProfile = async (req, res) => {
             })
         };
 
-        const file= req.file;
+        const file = req.file;
         //cloudainary comes here
         const fileUri = getDataUri(file);
         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
@@ -175,7 +178,7 @@ export const updateProfile = async (req, res) => {
 
 
         // resume comes later here....
-        if(cloudResponse){
+        if (cloudResponse) {
             user.profile.resume = cloudResponse.secure_url// save the cloudinary uri
             user.profile.resumeOriginalName = file.originalname // save the original file name
         }
