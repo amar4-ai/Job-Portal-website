@@ -35,10 +35,12 @@ const isInitialApplied = singleJob?.application?.some(
                 toast.success(res.data.message);
              }
         } catch (error) {
+            const message = error.response?.data?.message || "Something went wrong";
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(message);
+            // toast.error(error.response.data.message);
         }
-    }
+    };
 
 
     useEffect(() => {

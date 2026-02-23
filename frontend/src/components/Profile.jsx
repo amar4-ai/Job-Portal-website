@@ -18,6 +18,7 @@ const Profile = () => {
   useGetAppliedJobs();
   const [open, setOpen] = useState(false);
   const{user} = useSelector(store=>store.auth);
+  // const isResume = Boolean(user?.profile?.resume);
   return (
     <div>
       <Navbar />

@@ -44,11 +44,18 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         formData.append("email", input.email);
         formData.append("phoneNumber", input.phoneNumber);
         formData.append("bio", input.bio);
-        formData.append("skills", input.skills);
-        if (input.file) {
-            formData.append("file", input.file);
+         formData.append("skills", JSON.stringify(input.skills));
+        // formData.append("skills", input.skills);
+        // if (input.file) {
+        //     formData.append("file", input.file);
 
-        }
+        // }
+          // Append file only if a new one is selected
+  if (input.file && input.file instanceof File) {
+    formData.append("file", input.file);
+  }
+
+
         try {
             setLoading(true);
             const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
