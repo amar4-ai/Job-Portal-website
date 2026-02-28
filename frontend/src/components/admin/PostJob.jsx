@@ -27,7 +27,7 @@ const PostJob = () => {
         companyId: ""
     });
     const [loading, setLoading] = useState(false);
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     const { companies } = useSelector(store => store.company);
     // const changeEventHandler = (e) => {
     //     setInput({ ...input, [e.target.name]: e.target.value });
@@ -51,21 +51,21 @@ const PostJob = () => {
         try {
             setLoading(true);
             const res = await axios.post(`${JOB_API_END_POINT}/post`, input, {
-                headers:{
-                    'Content-Type':'application/json'
+                headers: {
+                    'Content-Type': 'application/json'
 
                 },
-                withCredentials:true
+                withCredentials: true
             });
-            if(res.data.success){
+            if (res.data.success) {
                 toast.success(res.data.message);
                 navigate("/admin/jobs");
             }
         } catch (error) {
             console.log(error);
             toast.error(error.response.data.message);
-            
-        }finally{
+
+        } finally {
             setLoading(false);
         }
 
@@ -190,7 +190,7 @@ const PostJob = () => {
                         }
 
                     </div>
-                     {
+                    {
                         loading ? <Button className="w-full my-4"><Loader2 className="mr-2 h-2 w-4 animate-spin" />Please Wait</Button> : <Button type="submit" className="w-full my-4">Post New Job</Button>
 
                     }
