@@ -18,19 +18,19 @@ const __dirname = path.resolve();
 
 
 const app = express();
-app.get("/home", (req, res)=>{
-    return res.status(200).json({
-        message:"I am coming from backend",
-        success:true
-    })
-});
+// app.get("/home", (req, res)=>{
+//     return res.status(200).json({
+//         message:"I am coming from backend",
+//         success:true
+//     })
+// });
 
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin: process.env.URL,
+    origin:"http://localhost:5173",
     credentials: true
 };
 
@@ -42,7 +42,7 @@ app.use("/api/v1/job",  jobRoute);
 app.use("/api/v1/application",applicationRoute);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
-app.use((req,res)=>{
+app.get("*splat",(req,res)=>{
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 })
 
