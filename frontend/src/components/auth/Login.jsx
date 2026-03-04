@@ -177,7 +177,7 @@ const Login = () => {
         input,
         { withCredentials: true }
       );
-
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
